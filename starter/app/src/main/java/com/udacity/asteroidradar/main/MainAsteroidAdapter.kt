@@ -49,7 +49,7 @@ class MainAsteroidAdapter(private val clickListener: AsteroidListener) :
         }
     }
 
-    class AsteroidListener(val clickListener: (asteroidId: Long) -> Unit) {
-        fun onClick(asteroid: Asteroid) = clickListener(asteroid.id)
+    class AsteroidListener(val clickListener: (asteroid: Asteroid) -> Unit) {
+        fun onClick(asteroid: Asteroid) = clickListener(asteroid)
     }
 }

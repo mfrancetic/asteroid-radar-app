@@ -17,15 +17,16 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{() -> clickListener.onClick(asteroid)}"
         android:padding="@dimen/default_padding"
         tools:background="@color/app_background">
 
         <TextView
             android:id="@+id/asteroid_name_list_item"
             style="@style/TitleTextView"
-            android:text="@{asteroid.codename}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="@{asteroid.codename}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="68347 (2001 KB67" />
@@ -43,11 +44,11 @@
             android:id="@+id/asteroid_isHazardous_list_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:statusIcon="@{asteroid.potentiallyHazardous}"
             android:contentDescription="@string/potentially_hazardous_asteroid_image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:statusIcon="@{asteroid.potentiallyHazardous}"
             tools:src="@drawable/ic_status_potentially_hazardous" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
