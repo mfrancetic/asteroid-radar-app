@@ -1,51 +1,26 @@
 package com.udacity.asteroidradar.main
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.*
 import com.udacity.asteroidradar.Asteroid
-import com.udacity.asteroidradar.Constants
-import com.udacity.asteroidradar.api.Network
-import com.udacity.asteroidradar.api.getSeventhDay
-import com.udacity.asteroidradar.api.getToday
-import com.udacity.asteroidradar.api.parseAsteroidsJsonResult
-import okhttp3.ResponseBody
-import org.json.JSONObject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.udacity.asteroidradar.database.AsteroidDatabase
+import com.udacity.asteroidradar.repository.AsteroidRepository
+import kotlinx.coroutines.launch
 
-class MainViewModel : ViewModel() {
+class MainViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val database = AsteroidDatabase.getDatabase(application)
+    private val asteroidRepository = AsteroidRepository(database)
 
     private val _navigateToDetailFragment = MutableLiveData<Asteroid>()
     val navigateToDetailFragment: LiveData<Asteroid>
         get() = _navigateToDetailFragment
 
-    private val _asteroids = MutableLiveData<List<Asteroid>>()
-    val asteroids: LiveData<List<Asteroid>>
-        get() = _asteroids
+    val asteroids = asteroidRepository.asteroids
 
     init {
-        initializeAsteroids()
-    }
-
-    private fun initializeAsteroids() {
-        Network.service.getAsteroids(getToday(), getSeventhDay(), Constants.API_KEY)
-            .enqueue(object : Callback<ResponseBody> {
-                override fun onResponse(
-                    call: Call<ResponseBody>,
-                    response: Response<ResponseBody>
-                ) {
-                    val jsonObject = response.body()?.string()
-                    if (jsonObject != null) {
-                        _asteroids.value = parseAsteroidsJsonResult(JSONObject(jsonObject))
-                    }
-                }
-
-                override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                    _asteroids.value = null
-                }
-            })
+        viewModelScope.launch { asteroidRepository.refreshAsteroids()
+        }
     }
 
     fun onAsteroidClicked(asteroid: Asteroid) {
