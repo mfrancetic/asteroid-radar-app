@@ -13,6 +13,8 @@ class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
 
+    private lateinit var adapter: MainAsteroidAdapter
+
     private val viewModel: MainViewModel by lazy {
         ViewModelProvider(this).get(MainViewModel::class.java)
     }
@@ -35,56 +37,19 @@ class MainFragment : Fragment() {
     }
 
     private fun setupRecyclerViewAdapter() {
-        val adapter = MainAsteroidAdapter(MainAsteroidAdapter.AsteroidListener { asteroid ->
+        adapter = MainAsteroidAdapter(MainAsteroidAdapter.AsteroidListener { asteroid ->
             viewModel.onAsteroidClicked(asteroid)
         })
         binding.asteroidRecycler.adapter = adapter
-
-        adapter.submitList(getDummyAsteroids())
-    }
-
-    private fun getDummyAsteroids(): MutableList<Asteroid> {
-        val asteroids = mutableListOf<Asteroid>()
-        asteroids.add(
-            Asteroid(
-                1, "68347 (20013 KB67", "2020-02-08",
-                0.0, 0.0, 0.0, 0.0, true
-            )
-        )
-        asteroids.add(
-            Asteroid(
-                1, "68347 (20013 KB67", "2020-02-08",
-                0.0, 0.0, 0.0, 0.0, true
-            )
-        )
-        asteroids.add(
-            Asteroid(
-                2, "68347 (20013 KB68", "2020-03-08",
-                0.0, 0.0, 0.0, 0.0, false
-            )
-        )
-        asteroids.add(
-            Asteroid(
-                3, "68347 (20013 KB69", "2020-04-08",
-                0.0, 0.0, 0.0, 0.0, false
-            )
-        )
-        asteroids.add(
-            Asteroid(
-                4, "68347 (20013 KB70", "2020-05-08",
-                0.0, 0.0, 0.0, 0.0, false
-            )
-        )
-        asteroids.add(
-            Asteroid(
-                5, "68347 (20013 KB71", "2020-06-08",
-                0.0, 0.0, 0.0, 0.0, false
-            )
-        )
-        return asteroids
     }
 
     private fun setupObservers() {
+        viewModel.asteroids.observe(viewLifecycleOwner, { asteroids ->
+            if (asteroids != null) {
+                adapter.submitList(asteroids)
+            }
+        })
+
         viewModel.navigateToDetailFragment.observe(viewLifecycleOwner, { asteroid ->
             if (asteroid != null) {
                 navigateToDetailFragment(asteroid)
