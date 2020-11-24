@@ -7,7 +7,7 @@ import com.udacity.asteroidradar.Constants
 
 @Dao
 interface AsteroidDao {
-    @Query("SELECT * FROM databaseAsteroid")
+    @Query("SELECT * FROM databaseAsteroid ORDER BY closeApproachDate ASC")
     fun getAsteroids(): LiveData<List<DatabaseAsteroid>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
