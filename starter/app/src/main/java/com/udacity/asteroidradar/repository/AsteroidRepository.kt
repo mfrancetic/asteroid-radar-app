@@ -16,7 +16,7 @@ import java.util.ArrayList
 class AsteroidRepository(private val database: AsteroidDatabase) {
 
     val asteroids: LiveData<List<Asteroid>> =
-        Transformations.map(database.asteroidDao.getAsteroids()) {
+        Transformations.map(database.asteroidDao.getAsteroids(getToday())) {
             it.asDomainModel()
         }
 
