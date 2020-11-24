@@ -20,11 +20,11 @@ class AsteroidRepository(private val database: AsteroidDatabase) {
             it.asDomainModel()
         }
 
-    suspend fun refreshAsteroids() {
+    suspend fun refreshAsteroids(startDate: String = getToday(), endDate: String = getSeventhDay()) {
         var asteroidList: ArrayList<Asteroid>
         withContext(Dispatchers.IO) {
             val asteroidResponseBody: ResponseBody = Network.service.getAsteroids(
-                getToday(), getSeventhDay(),
+                startDate, endDate,
                 Constants.API_KEY
             )
                 .await()
