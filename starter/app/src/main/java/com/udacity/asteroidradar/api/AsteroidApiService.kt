@@ -1,10 +1,8 @@
 package com.udacity.asteroidradar.api
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.udacity.asteroidradar.Constants
-import com.udacity.asteroidradar.PictureOfDay
+import com.udacity.asteroidradar.models.PictureOfDay
 import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import retrofit2.Retrofit

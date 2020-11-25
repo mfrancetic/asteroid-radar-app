@@ -2,7 +2,7 @@ package com.udacity.asteroidradar.utils
 
 import android.widget.ImageView
 import com.squareup.picasso.Picasso
-import com.udacity.asteroidradar.PictureOfDay
+import com.udacity.asteroidradar.models.PictureOfDay
 import com.udacity.asteroidradar.R
 
 fun displayPicture(picture: PictureOfDay, imageView: ImageView) {

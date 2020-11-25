@@ -1,8 +1,8 @@
 package com.udacity.asteroidradar.api
 
-import com.udacity.asteroidradar.Asteroid
+import com.udacity.asteroidradar.models.Asteroid
 import com.udacity.asteroidradar.Constants
-import com.udacity.asteroidradar.PictureOfDay
+import com.udacity.asteroidradar.models.PictureOfDay
 import com.udacity.asteroidradar.database.DatabaseAsteroid
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
