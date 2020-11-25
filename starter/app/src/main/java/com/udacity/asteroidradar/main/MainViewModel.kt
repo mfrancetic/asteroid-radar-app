@@ -3,9 +3,11 @@ package com.udacity.asteroidradar.main
 import android.app.Application
 import androidx.lifecycle.*
 import com.udacity.asteroidradar.Asteroid
+import com.udacity.asteroidradar.PictureOfDay
+import com.udacity.asteroidradar.api.getPictureOfDay
 import com.udacity.asteroidradar.database.AsteroidDatabase
 import com.udacity.asteroidradar.repository.AsteroidRepository
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -18,9 +20,19 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val asteroids = asteroidRepository.asteroids
 
+    private val _pictureOfDay = MutableLiveData<PictureOfDay>()
+    val pictureOfDay: LiveData<PictureOfDay>
+        get() = _pictureOfDay
+
     init {
-        viewModelScope.launch { asteroidRepository.refreshAsteroids()
+        viewModelScope.launch {
+            asteroidRepository.refreshAsteroids()
+            refreshPictureOfDay()
         }
+    }
+
+    private suspend fun refreshPictureOfDay() {
+        _pictureOfDay.value = getPictureOfDay()
     }
 
     fun onAsteroidClicked(asteroid: Asteroid) {
