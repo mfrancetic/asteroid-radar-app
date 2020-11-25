@@ -1,4 +1,4 @@
-package com.udacity.asteroidradar
+package com.udacity.asteroidradar.utils
 
 import com.udacity.asteroidradar.api.SecretStrings
 

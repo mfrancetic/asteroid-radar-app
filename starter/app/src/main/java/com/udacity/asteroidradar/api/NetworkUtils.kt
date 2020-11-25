@@ -1,7 +1,7 @@
 package com.udacity.asteroidradar.api
 
 import com.udacity.asteroidradar.models.Asteroid
-import com.udacity.asteroidradar.Constants
+import com.udacity.asteroidradar.utils.Constants
 import com.udacity.asteroidradar.models.PictureOfDay
 import com.udacity.asteroidradar.database.DatabaseAsteroid
 import kotlinx.coroutines.Dispatchers
@@ -95,7 +95,7 @@ fun ArrayList<Asteroid>.asDomainModel(): Array<DatabaseAsteroid> {
 suspend fun getPictureOfDay(): PictureOfDay {
     var pictureOfDay: PictureOfDay
     withContext(Dispatchers.IO) {
-        pictureOfDay = Network.service.getPictureOfDay().await()
+        pictureOfDay = Network.service.getPictureOfDayAsync().await()
     }
     return pictureOfDay
 }
