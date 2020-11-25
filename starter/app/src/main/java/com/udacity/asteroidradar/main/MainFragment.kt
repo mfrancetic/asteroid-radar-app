@@ -60,7 +60,7 @@ class MainFragment : Fragment() {
 
         viewModel.pictureOfDay.observe(viewLifecycleOwner, { pictureOfDay ->
             if (pictureOfDay != null) {
-                displayPicture(pictureOfDay, binding.activityMainImageOfTheDay, requireContext())
+                displayPicture(pictureOfDay, binding.activityMainImageOfTheDay)
             }
         })
     }

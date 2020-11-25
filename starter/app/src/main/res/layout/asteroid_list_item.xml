@@ -44,7 +44,7 @@
             android:id="@+id/asteroid_isHazardous_list_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:contentDescription="@string/potentially_hazardous_asteroid_image"
+            tools:ignore="ContentDescription"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
