@@ -20,7 +20,10 @@ class AsteroidRepository(private val database: AsteroidDatabase) {
             it.asDomainModel()
         }
 
-    suspend fun refreshAsteroids(startDate: String = getToday(), endDate: String = getSeventhDay()) {
+    suspend fun refreshAsteroids(
+        startDate: String = getToday(),
+        endDate: String = getSeventhDay()
+    ) {
         var asteroidList: ArrayList<Asteroid>
         withContext(Dispatchers.IO) {
             val asteroidResponseBody: ResponseBody = Network.service.getAsteroidsAsync(
@@ -31,5 +34,9 @@ class AsteroidRepository(private val database: AsteroidDatabase) {
             asteroidList = parseAsteroidsJsonResult(JSONObject(asteroidResponseBody.string()))
             database.asteroidDao.insertAll(*asteroidList.asDomainModel())
         }
+    }
+
+    fun deletePreviousDayAsteroids() {
+        database.asteroidDao.deletePreviousDayAsteroids(getToday())
     }
 }

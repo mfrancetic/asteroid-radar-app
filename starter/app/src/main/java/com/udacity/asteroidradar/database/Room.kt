@@ -13,6 +13,9 @@ interface AsteroidDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg asteroids: DatabaseAsteroid)
+
+    @Query("DELETE FROM DatabaseAsteroid WHERE closeApproachDate < :today")
+    fun deletePreviousDayAsteroids(today: String)
 }
 
 @Database(entities = [DatabaseAsteroid::class], version = 1, exportSchema = false)

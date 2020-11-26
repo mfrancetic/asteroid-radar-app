@@ -3,6 +3,9 @@ package com.udacity.asteroidradar
 import android.app.Application
 import android.os.Build
 import androidx.work.*
+import com.udacity.asteroidradar.utils.Constants.DELETE_ASTEROIDS_WORK_NAME
+import com.udacity.asteroidradar.utils.Constants.REFRESH_ASTEROIDS_WORK_NAME
+import com.udacity.asteroidradar.work.DeleteDataWork
 import com.udacity.asteroidradar.work.RefreshDataWork
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -34,16 +37,29 @@ class AsteroidRadarApplication : Application() {
                     setRequiresDeviceIdle(true)
                 }
             }.build()
-        val repeatingRequest = PeriodicWorkRequestBuilder<RefreshDataWork>(
+
+        val repeatingRefreshRequest = PeriodicWorkRequestBuilder<RefreshDataWork>(
             // once a day
             1,
             TimeUnit.DAYS
         ).setConstraints(constraints)
             .build()
         WorkManager.getInstance().enqueueUniquePeriodicWork(
-            RefreshDataWork.ASTEROIDS_WORK_NAME,
+            REFRESH_ASTEROIDS_WORK_NAME,
             ExistingPeriodicWorkPolicy.KEEP, // keep - will disregard the new request
-            repeatingRequest
+            repeatingRefreshRequest
+        )
+
+        val repeatingDeleteRequest = PeriodicWorkRequestBuilder<DeleteDataWork>(
+            // once a day
+            1,
+            TimeUnit.DAYS
+        ).setConstraints(constraints)
+            .build()
+        WorkManager.getInstance().enqueueUniquePeriodicWork(
+            DELETE_ASTEROIDS_WORK_NAME,
+            ExistingPeriodicWorkPolicy.KEEP, // keep - will disregard the new request
+            repeatingDeleteRequest
         )
     }
 }
