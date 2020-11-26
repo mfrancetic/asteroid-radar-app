@@ -3,6 +3,7 @@ package com.udacity.asteroidradar.utils
 import com.udacity.asteroidradar.api.SecretStrings
 
 object Constants {
+    const val IMAGE_MEDIA_TYPE = "image"
     const val API_QUERY_DATE_FORMAT = "YYYY-MM-dd"
     const val DEFAULT_END_DATE_DAYS = 7
     const val BASE_URL = "https://api.nasa.gov/"

@@ -92,10 +92,13 @@ fun ArrayList<Asteroid>.asDomainModel(): Array<DatabaseAsteroid> {
         .toTypedArray()
 }
 
-suspend fun getPictureOfDay(): PictureOfDay {
+suspend fun getPictureOfDay(): PictureOfDay? {
     var pictureOfDay: PictureOfDay
     withContext(Dispatchers.IO) {
         pictureOfDay = Network.service.getPictureOfDayAsync().await()
     }
-    return pictureOfDay
+    if (pictureOfDay.mediaType == Constants.IMAGE_MEDIA_TYPE) {
+        return pictureOfDay
+    }
+    return null
 }
