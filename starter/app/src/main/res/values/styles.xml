@@ -6,7 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColor">@color/default_text_color</item>
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
     <style name="TitleTextView" parent="TextAppearance.AppCompat.Title">
@@ -14,7 +14,11 @@
         <item name="android:textColor">@color/default_text_color</item>
     </style>
 
-    <style name="SubtitleTextView" parent="TextAppearance.AppCompat.Medium">
-        <item name="android:textColor">@color/text_grey</item>
+    <style name="SubtitleTextView" parent="TextAppearance.AppCompat.Subhead">
+        <item name="android:textColor">@color/default_text_color</item>
+    </style>
+
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColor">@android:color/holo_red_light</item>
     </style>
 </resources>

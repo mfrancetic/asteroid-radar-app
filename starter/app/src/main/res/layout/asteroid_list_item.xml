@@ -32,6 +32,7 @@
             tools:text="68347 (2001 KB67" />
 
         <TextView
+            style="@style/SubtitleTextView"
             android:id="@+id/asteroid_approach_date_list_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
