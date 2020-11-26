@@ -8,6 +8,7 @@ import com.udacity.asteroidradar.api.getPictureOfDay
 import com.udacity.asteroidradar.database.AsteroidDatabase
 import com.udacity.asteroidradar.repository.AsteroidRepository
 import kotlinx.coroutines.*
+import java.lang.Exception
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -24,10 +25,18 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val pictureOfDay: LiveData<PictureOfDay>
         get() = _pictureOfDay
 
+    private val _displaySnackbarEvent = MutableLiveData<Boolean>()
+    val displaySnackbarEvent: LiveData<Boolean>
+        get() = _displaySnackbarEvent
+
     init {
         viewModelScope.launch {
-            asteroidRepository.refreshAsteroids()
-            refreshPictureOfDay()
+            try {
+                asteroidRepository.refreshAsteroids()
+                refreshPictureOfDay()
+            } catch (e: Exception) {
+                _displaySnackbarEvent.value = true
+            }
         }
     }
 
@@ -41,5 +50,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun doneNavigating() {
         _navigateToDetailFragment.value = null
+    }
+
+    fun doneDisplayingSnackbar() {
+        _displaySnackbarEvent.value = false
     }
 }

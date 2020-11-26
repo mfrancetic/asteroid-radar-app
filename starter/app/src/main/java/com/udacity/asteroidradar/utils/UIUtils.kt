@@ -1,6 +1,9 @@
 package com.udacity.asteroidradar.utils
 
+import android.content.Context
+import android.view.View
 import android.widget.ImageView
+import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 import com.udacity.asteroidradar.models.PictureOfDay
 import com.udacity.asteroidradar.R
@@ -19,4 +22,8 @@ fun displayPicture(picture: PictureOfDay, imageView: ImageView) {
             picture.title
         )
     imageView.contentDescription = contentDescription
+}
+
+fun displaySnackbar(snackbarText: String, view: View) {
+    Snackbar.make(view, snackbarText, Snackbar.LENGTH_SHORT).show()
 }

@@ -9,6 +9,7 @@ import com.udacity.asteroidradar.models.Asteroid
 import com.udacity.asteroidradar.R
 import com.udacity.asteroidradar.databinding.FragmentMainBinding
 import com.udacity.asteroidradar.utils.displayPicture
+import com.udacity.asteroidradar.utils.displaySnackbar
 
 class MainFragment : Fragment() {
 
@@ -61,6 +62,16 @@ class MainFragment : Fragment() {
         viewModel.pictureOfDay.observe(viewLifecycleOwner, { pictureOfDay ->
             if (pictureOfDay != null) {
                 displayPicture(pictureOfDay, binding.activityMainImageOfTheDay)
+            }
+        })
+
+        viewModel.displaySnackbarEvent.observe(viewLifecycleOwner, { displaySnackbarEvent ->
+            if (displaySnackbarEvent) {
+                displaySnackbar(
+                    getString(R.string.no_internet_connect_displaying_database_data),
+                    requireView()
+                )
+                viewModel.doneDisplayingSnackbar()
             }
         })
     }
