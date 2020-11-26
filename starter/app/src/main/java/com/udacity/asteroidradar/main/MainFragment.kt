@@ -8,7 +8,6 @@ import androidx.navigation.fragment.findNavController
 import com.udacity.asteroidradar.models.Asteroid
 import com.udacity.asteroidradar.R
 import com.udacity.asteroidradar.databinding.FragmentMainBinding
-import com.udacity.asteroidradar.utils.displayPicture
 import com.udacity.asteroidradar.utils.displaySnackbar
 
 class MainFragment : Fragment() {
@@ -56,12 +55,6 @@ class MainFragment : Fragment() {
             if (asteroid != null) {
                 navigateToDetailFragment(asteroid)
                 viewModel.doneNavigating()
-            }
-        })
-
-        viewModel.pictureOfDay.observe(viewLifecycleOwner, { pictureOfDay ->
-            if (pictureOfDay != null) {
-                displayPicture(pictureOfDay, binding.activityMainImageOfTheDay)
             }
         })
 
