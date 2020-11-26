@@ -60,7 +60,7 @@ fun bindPictureOfDay(imageView: ImageView, pictureOfDay: PictureOfDay?) {
         Picasso.with(context)
             .load(pictureOfDay.url)
             .placeholder(R.drawable.placeholder_picture_of_day)
-            .error(R.drawable.ic_broken_image)
+            .error(R.drawable.no_image_available)
             .fit()
             .centerCrop()
             .into(imageView)
@@ -71,5 +71,9 @@ fun bindPictureOfDay(imageView: ImageView, pictureOfDay: PictureOfDay?) {
                 pictureOfDay.title
             )
         imageView.contentDescription = contentDescription
+    } else {
+        imageView.setImageResource(R.drawable.no_image_available)
+        imageView.scaleType = ImageView.ScaleType.CENTER_INSIDE
+        imageView.contentDescription = context.getString(R.string.this_is_nasa_s_picture_of_day_showing_nothing_yet)
     }
 }
