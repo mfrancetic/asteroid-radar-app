@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Asteroid Radar</string>
+    <string name="next_week_asteroids">Prikaži tjedne asteroide</string>
+    <string name="today_asteroids">Prikaži današnje asteroide</string>
+    <string name="saved_asteroids">Prikaži sačuvane asteroide</string>
+    <string name="close_approach_data_title">Datum bliskog približavanja</string>
+    <string name="absolute_magnitude_title">Apsolutna magnituda</string>
+    <string name="estimated_diameter_title">Procijenjeni promjer</string>
+    <string name="relative_velocity_title">Relativna brzina</string>
+    <string name="distance_from_earth_title">Udaljenost od Zemlje</string>
+    <string name="image_of_the_day">Slika dana</string>
+    <string name="astronomica_unit_explanation">Astronomska jedinica (au) je jedinica duljine, približno udaljenost od Zemlje do Sunca i jednaka oko 150 milijuna kilometara (93 milijuna milja)</string>
+    <string name="astronomical_unit_explanation_button">Definicija astronomske jedinice</string>
+    <string name="potentially_hazardous_asteroid_image">Slika potencijalno opasnog asteroida</string>
+    <string name="not_hazardous_asteroid_image">Slika sigurnog asteroida</string>
+    <string name="this_is_nasa_s_picture_of_day_showing_nothing_yet">Ovo je NASA-ina slika dana, koja još ništa ne prikazuje</string>
+    <string name="nasa_picture_of_day_content_description_format">NASA-ina slika dana</string>
+    <string name="no_internet_connect_displaying_database_data">Nema Internetske veze. Prikaz lokalno sačuvanih podataka.</string>
+</resources>
