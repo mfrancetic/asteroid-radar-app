@@ -10,6 +10,7 @@ import com.udacity.asteroidradar.api.getToday
 import com.udacity.asteroidradar.database.AsteroidDatabase
 import com.udacity.asteroidradar.repository.AsteroidRepository
 import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.collect
 import java.lang.Exception
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
@@ -21,7 +22,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     val navigateToDetailFragment: LiveData<Asteroid>
         get() = _navigateToDetailFragment
 
-    val asteroids = asteroidRepository.asteroids
+    private var _asteroids = MutableLiveData<List<Asteroid>>()
+    val asteroids: LiveData<List<Asteroid>>
+        get() = _asteroids
 
     private val _pictureOfDay = MutableLiveData<PictureOfDay>()
     val pictureOfDay: LiveData<PictureOfDay>
@@ -32,6 +35,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         get() = _displaySnackbarEvent
 
     init {
+        onViewWeekAsteroidsClicked()
         viewModelScope.launch {
             try {
                 asteroidRepository.refreshAsteroids()
@@ -60,14 +64,26 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun onViewWeekAsteroidsClicked() {
-      asteroidRepository.filterAsteroids(getToday(), getSeventhDay())
+        viewModelScope.launch {
+            database.asteroidDao.getAsteroids(getToday(), getSeventhDay()).collect { asteroids ->
+                _asteroids.value = asteroids
+            }
+        }
     }
 
     fun onTodayAsteroidsClicked() {
-        asteroidRepository.filterAsteroids(getToday(), getToday())
+        viewModelScope.launch {
+            database.asteroidDao.getAsteroids(getToday(), getToday()).collect { asteroids ->
+                _asteroids.value = asteroids
+            }
+        }
     }
 
     fun onSavedAsteroidsClicked() {
-         asteroidRepository.filterAsteroids(getToday(), getSeventhDay())
+        viewModelScope.launch {
+            database.asteroidDao.getAsteroids(getToday(), getSeventhDay()).collect { asteroids ->
+                _asteroids.value = asteroids
+            }
+        }
     }
 }
