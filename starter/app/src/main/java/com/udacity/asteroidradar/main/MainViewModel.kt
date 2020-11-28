@@ -5,6 +5,8 @@ import androidx.lifecycle.*
 import com.udacity.asteroidradar.models.Asteroid
 import com.udacity.asteroidradar.models.PictureOfDay
 import com.udacity.asteroidradar.api.getPictureOfDay
+import com.udacity.asteroidradar.api.getSeventhDay
+import com.udacity.asteroidradar.api.getToday
 import com.udacity.asteroidradar.database.AsteroidDatabase
 import com.udacity.asteroidradar.repository.AsteroidRepository
 import kotlinx.coroutines.*
@@ -35,6 +37,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 asteroidRepository.refreshAsteroids()
                 refreshPictureOfDay()
             } catch (e: Exception) {
+                println("exception: $e.message")
                 _displaySnackbarEvent.value = true
             }
         }
@@ -54,5 +57,17 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     fun doneDisplayingSnackbar() {
         _displaySnackbarEvent.value = false
+    }
+
+    fun onViewWeekAsteroidsClicked() {
+      asteroidRepository.filterAsteroids(getToday(), getSeventhDay())
+    }
+
+    fun onTodayAsteroidsClicked() {
+        asteroidRepository.filterAsteroids(getToday(), getToday())
+    }
+
+    fun onSavedAsteroidsClicked() {
+         asteroidRepository.filterAsteroids(getToday(), getSeventhDay())
     }
 }

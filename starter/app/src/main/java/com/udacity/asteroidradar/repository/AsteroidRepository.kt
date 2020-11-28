@@ -15,8 +15,8 @@ import java.util.ArrayList
 
 class AsteroidRepository(private val database: AsteroidDatabase) {
 
-    val asteroids: LiveData<List<Asteroid>> =
-        Transformations.map(database.asteroidDao.getAsteroids(getToday())) {
+    var asteroids: LiveData<List<Asteroid>> =
+        Transformations.map(database.asteroidDao.getAsteroids(getToday(), getSeventhDay())) {
             it.asDomainModel()
         }
 
@@ -38,5 +38,12 @@ class AsteroidRepository(private val database: AsteroidDatabase) {
 
     fun deletePreviousDayAsteroids() {
         database.asteroidDao.deletePreviousDayAsteroids(getToday())
+    }
+
+    fun filterAsteroids(startDate: String, endDate: String) {
+        asteroids  =
+            Transformations.map(database.asteroidDao.getAsteroids(startDate, endDate)) {
+                it.asDomainModel()
+            }
     }
 }
