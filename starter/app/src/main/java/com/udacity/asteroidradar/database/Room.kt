@@ -10,7 +10,10 @@ import kotlinx.coroutines.flow.Flow
 interface AsteroidDao {
 
     @Query("SELECT * FROM databaseAsteroid WHERE closeApproachDate >= :startDate AND closeApproachDate <= :endDate ORDER BY closeApproachDate ASC")
-    fun getAsteroids(startDate: String, endDate: String): Flow<List<Asteroid>>
+    fun getAsteroidsByCloseApproachDate(startDate: String, endDate: String): Flow<List<Asteroid>>
+
+    @Query("SELECT * FROM databaseAsteroid ORDER BY closeApproachDate ASC")
+    fun getAllAsteroids(): Flow<List<Asteroid>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg asteroids: DatabaseAsteroid)
