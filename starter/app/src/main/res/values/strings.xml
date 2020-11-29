@@ -20,4 +20,6 @@
     <string name="this_is_nasa_s_picture_of_day_showing_nothing_yet">This is NASA\'s picture of day, showing nothing yet</string>
     <string name="nasa_picture_of_day_content_description_format">NASA\'s picture of day: %s</string>
     <string name="problems_retrieving_online_data_displaying_local_data">Problems retrieving online data. Displaying local data.</string>
+    <string name="asteroid_list">Asteroid List</string>
+    <string name="asteroid_details">Asteroid Details</string>
 </resources>

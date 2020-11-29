@@ -7,17 +7,18 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.udacity.asteroidradar.main.MainFragment"
-        android:label="fragment_main"
+        android:label="@string/asteroid_list"
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_showDetail"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:popUpTo="@id/mainFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.udacity.asteroidradar.detail.DetailFragment"
-        android:label="fragment_detail"
+        android:label="@string/asteroid_details"
         tools:layout="@layout/fragment_detail">
 
         <argument
