@@ -32,7 +32,6 @@ private val moshi = Moshi.Builder()
     .add(KotlinJsonAdapterFactory())
     .build()
 
-
 object Network {
     private val retrofit = Retrofit.Builder()
         .baseUrl(Constants.BASE_URL)

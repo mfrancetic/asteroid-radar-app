@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="IconLocation">
+        <ignore path="src/main/res/drawable/asteroid_hazardous.png" />
+        <ignore path="src/main/res/drawable/asteroid_safe.png" />
+        <ignore path="src/main/res/drawable/no_image_available.png" />
+    </issue>
+</lint>

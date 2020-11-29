@@ -16,6 +16,7 @@
         android:layout_height="match_parent"
         android:background="@color/app_background"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/main_nav_graph" />
+        app:navGraph="@navigation/main_nav_graph"
+        tools:ignore="FragmentTagUsage" />
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </layout>

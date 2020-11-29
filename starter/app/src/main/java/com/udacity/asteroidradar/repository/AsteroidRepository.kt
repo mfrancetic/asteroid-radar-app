@@ -1,3 +1,5 @@
+@file:Suppress("BlockingMethodInNonBlockingContext")
+
 package com.udacity.asteroidradar.repository
 
 import com.udacity.asteroidradar.api.*
@@ -28,9 +30,9 @@ class AsteroidRepository(private val database: AsteroidDatabase) {
         }
     }
 
-     suspend fun deletePreviousDayAsteroids() {
-         withContext(Dispatchers.IO) {
-             database.asteroidDao.deletePreviousDayAsteroids(getToday())
-         }
+    suspend fun deletePreviousDayAsteroids() {
+        withContext(Dispatchers.IO) {
+            database.asteroidDao.deletePreviousDayAsteroids(getToday())
+        }
     }
 }

@@ -15,6 +15,8 @@
     <string name="potentially_hazardous_asteroid_image">Slika potencijalno opasnog asteroida</string>
     <string name="not_hazardous_asteroid_image">Slika sigurnog asteroida</string>
     <string name="this_is_nasa_s_picture_of_day_showing_nothing_yet">Ovo je NASA-ina slika dana, koja još ništa ne prikazuje</string>
-    <string name="nasa_picture_of_day_content_description_format">NASA-ina slika dana</string>
+    <string name="nasa_picture_of_day_content_description_format">NASA-ina slika dana: %s</string>
     <string name="problems_retrieving_online_data_displaying_local_data">Problem s dobivanjem online podataka. Prikaz lokalno sačuvanih podataka.</string>
+    <string name="asteroid_list">List asteroida</string>
+    <string name="asteroid_details">Detalji asteroida</string>
 </resources>

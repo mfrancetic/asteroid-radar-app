@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.udacity.asteroidradar
 
 import android.app.Application

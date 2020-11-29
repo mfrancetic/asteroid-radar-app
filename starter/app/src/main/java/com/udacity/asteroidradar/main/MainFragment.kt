@@ -13,7 +13,6 @@ import com.udacity.asteroidradar.utils.displaySnackbar
 class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
-
     private lateinit var adapter: MainAsteroidAdapter
 
     private val viewModel: MainViewModel by lazy {

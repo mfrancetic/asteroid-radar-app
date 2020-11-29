@@ -2,8 +2,6 @@ package com.udacity.asteroidradar.utils
 
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.view.setPadding
-import androidx.core.view.updatePaddingRelative
 import androidx.databinding.BindingAdapter
 import com.squareup.picasso.Picasso
 import com.udacity.asteroidradar.R
@@ -74,6 +72,7 @@ fun bindPictureOfDay(imageView: ImageView, pictureOfDay: PictureOfDay?) {
     } else {
         imageView.setImageResource(R.drawable.no_image_available)
         imageView.scaleType = ImageView.ScaleType.CENTER_INSIDE
-        imageView.contentDescription = context.getString(R.string.this_is_nasa_s_picture_of_day_showing_nothing_yet)
+        imageView.contentDescription =
+            context.getString(R.string.this_is_nasa_s_picture_of_day_showing_nothing_yet)
     }
 }
