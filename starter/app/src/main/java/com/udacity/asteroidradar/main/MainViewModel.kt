@@ -41,7 +41,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                 asteroidRepository.refreshAsteroids()
                 refreshPictureOfDay()
             } catch (e: Exception) {
-                println("exception: $e.message")
+                println("Exception refreshing data: $e.message")
                 _displaySnackbarEvent.value = true
             }
         }

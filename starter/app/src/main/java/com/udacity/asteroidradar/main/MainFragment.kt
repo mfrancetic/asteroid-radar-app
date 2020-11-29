@@ -61,7 +61,7 @@ class MainFragment : Fragment() {
         viewModel.displaySnackbarEvent.observe(viewLifecycleOwner, { displaySnackbarEvent ->
             if (displaySnackbarEvent) {
                 displaySnackbar(
-                    getString(R.string.no_internet_connect_displaying_database_data),
+                    getString(R.string.problems_retrieving_online_data_displaying_local_data),
                     requireView()
                 )
                 viewModel.doneDisplayingSnackbar()
