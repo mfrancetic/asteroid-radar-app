@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="viewModel"
+            type="com.udacity.asteroidradar.detail.DetailViewModel" />
 
         <variable
             name="asteroid"
@@ -96,6 +99,7 @@
                         android:layout_height="wrap_content"
                         android:contentDescription="@string/astronomical_unit_explanation_button"
                         android:padding="16dp"
+                        android:onClick="@{() -> viewModel.onExplanationButtonClicked()}"
                         app:srcCompat="@drawable/ic_help_circle" />
 
                 </LinearLayout>
