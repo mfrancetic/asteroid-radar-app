@@ -18,7 +18,7 @@
         <FrameLayout
             android:id="@+id/activity_main_image_of_the_day_layout"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="@dimen/image_of_day_height"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -38,11 +38,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:background="#55010613"
-                android:padding="16dp"
+                android:background="@color/background_gray"
+                android:padding="@dimen/default_padding"
                 android:text="@string/image_of_the_day"
                 android:textColor="@android:color/white"
-                android:textSize="20sp"
+                android:textSize="@dimen/picture_of_day_label_text_size"
                 android:textStyle="bold" />
         </FrameLayout>
 

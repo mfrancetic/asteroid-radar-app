@@ -6,4 +6,5 @@
     <color name="app_background">#010613</color>
     <color name="default_text_color">#FFFFFF</color>
     <color name="potentially_hazardous">#FF8282</color>
+    <color name="background_gray">#55010613</color>
 </resources>
