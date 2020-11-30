@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="default_padding">16dp</dimen>
-    <dimen name="default_padding">16dp</dimen>
     <dimen name="list_item_margin">4dp</dimen>
     <dimen name="image_of_day_height">220dp</dimen>
     <dimen name="picture_of_day_label_text_size">20sp</dimen>
